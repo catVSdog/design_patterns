@@ -4,6 +4,7 @@
 单个装饰器
 """
 
+
 class PrintComponent:
     def operator(self):
         print("啦～啦啦啦～, 追不上我吧～")
