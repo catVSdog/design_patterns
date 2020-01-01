@@ -5,32 +5,27 @@ from abc import ABC, abstractmethod
 
 
 class BaseOperator(ABC):
-    @classmethod
     @abstractmethod
-    def get_result(cls, x, y):
+    def get_result(self, x, y):
         pass
 
 
 class ADD(BaseOperator):
-    @classmethod
-    def get_result(cls, x, y):
+    def get_result(self, x, y):
         return x + y
 
 
 class SUB(BaseOperator):
-    @classmethod
-    def get_result(cls, x, y):
+    def get_result(self, x, y):
         return x - y
 
 
 class MUL(BaseOperator):
-    @classmethod
-    def get_result(cls, x, y):
+    def get_result(self, x, y):
         return x * y
 
 
 class DIV(BaseOperator):
-    @classmethod
     def get_result(cls, x, y):
         if y == 0:
             raise ZeroDivisionError
@@ -39,26 +34,26 @@ class DIV(BaseOperator):
 
 class OperatorFactor:
     @classmethod
-    def create_operator(cls, operator_name):
+    def create_operator(cls, operator_name):  # 此处耦合性较高,每增加一个操作类,就要修改这里.改进版：工厂方法模式
         if operator_name == '+':
-            return ADD
+            return ADD()
         if operator_name == '-':
-            return SUB
+            return SUB()
         if operator_name == '/':
-            return DIV
+            return DIV()
         if operator_name == '*':
-            return MUL
+            return MUL()
 
 
 if __name__ == '__main__':
     op = OperatorFactor.create_operator('+')
-    print(op.get_result(1, 2))
+    assert op.get_result(1, 2) == 3
 
     op = OperatorFactor.create_operator('-')
-    print(op.get_result(1, 2))
+    assert op.get_result(1, 2) == -1
 
     op = OperatorFactor.create_operator('*')
-    print(op.get_result(1, 2))
+    assert op.get_result(1, 2) == 2
 
     op = OperatorFactor.create_operator('/')
-    print(op.get_result(1, 2))
+    assert op.get_result(1, 2) == 0.5

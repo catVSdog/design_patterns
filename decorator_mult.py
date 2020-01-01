@@ -19,8 +19,7 @@ class PrintComponent(BaseComponent):
 
 class Decorator(BaseComponent):  # 也可以不需要BaseComponent, Decorator直接继承PrintComponent
     def __init__(self, cc):
-        assert isinstance(cc,
-                          BaseComponent)  # 要求必须 cc 必须是 BaseComponent/PrintComponent 的子类,只有这样才能重写operator方法,实际调用cc的operator
+        assert isinstance(cc, BaseComponent)  # 要求必须 cc 必须是 BaseComponent/PrintComponent 的子类,只有这样才能重写operator方法,实际调用cc的operator
         self.cc = cc
 
     def operator(self):  # 要求方法名必须也是operator,这样多个装饰器嵌套的的时候,就可以不需要关注其他装饰器的方法名,降低耦合,可以随意组织装饰器的顺序
