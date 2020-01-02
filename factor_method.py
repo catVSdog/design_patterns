@@ -37,43 +37,43 @@ class DIV(BaseOperator):
 
 class Factor(ABC):
     @abstractmethod
-    def produce(self):
+    def get_operation(self):
         pass
 
 
-class AddFactor(Factor):
-    def produce(self):
+class AddFactor(Factor):  # ~~ 一个类,对应一个工厂类 ~~
+    def get_operation(self):
         return ADD()
 
 
 class SubFactor(Factor):
-    def produce(self):
+    def get_operation(self):
         return SUB()
 
 
 class MulFactor(Factor):
-    def produce(self):
+    def get_operation(self):
         return MUL()
 
 
 class DivFactor(Factor):
-    def produce(self):
+    def get_operation(self):
         return DIV()
 
 
 if __name__ == '__main__':
     add_factor = AddFactor()
-    add_operator = add_factor.produce()
+    add_operator = add_factor.get_operation()
     assert add_operator.get_result(1, 2) == 3
 
     sub_factor = SubFactor()
-    sub_operator = sub_factor.produce()
+    sub_operator = sub_factor.get_operation()
     assert sub_operator.get_result(1, 2) == -1
 
     mul_factor = MulFactor()
-    mul_operator = mul_factor.produce()
+    mul_operator = mul_factor.get_operation()
     assert mul_operator.get_result(1, 2) == 2
 
     div_factor = DivFactor()
-    div_operator = div_factor.produce()
+    div_operator = div_factor.get_operation()
     assert div_operator.get_result(1, 2) == 0.5

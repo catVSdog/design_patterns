@@ -35,7 +35,7 @@ class DIV(BaseOperator):
 class OperatorFactor:
     @classmethod
     def create_operator(cls, operator_name):  # 此处耦合性较高,每增加一个操作类,就要修改这里.改进版：工厂方法模式
-        if operator_name == '+':
+        if operator_name == '+':  # ~~ 一个类,对应一个工厂case语句 ~~
             return ADD()
         if operator_name == '-':
             return SUB()
