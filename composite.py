@@ -30,22 +30,22 @@ class Company(Component):
     def __init__(self, name, duty):
         self.name = name
         self.duty = duty
-        self.sun_parts = []
+        self.son_parts = []
 
     def add(self, componeny):
-        self.sun_parts.append(componeny)
+        self.son_parts.append(componeny)
 
     def remove(self, componeny):
-        self.sun_parts.remove(componeny)
+        self.son_parts.remove(componeny)
 
     def display_organization(self, depth=1):
         print(f"{'-' * depth}{self.name}")
-        for com in self.sun_parts:
+        for com in self.son_parts:
             com.display_organization(depth + 2)  # 递归调用子节点
 
     def show_duty(self):
         print(self.duty)
-        for dep in self.sun_parts:
+        for dep in self.son_parts:
             dep.show_duty()  # 递归调用子节点
 
 
