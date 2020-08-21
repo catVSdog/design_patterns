@@ -19,6 +19,9 @@
 即:使用装饰器，将 cls() 操作转换为函数调用过程. 具体又分:
 3.函数装饰器
 4.类装饰器
+
+
+还有一种是利用 python 包导入特性——每个包只导入一次，在一个模块中实例化一个类，然后在其他模块中直接导入该实例。
 """
 
 
@@ -214,3 +217,18 @@ class Hangzhou:
 hangzhou_1 = Hangzhou()
 hangzhou_2 = Hangzhou()
 assert hangzhou_1 == hangzhou_2
+
+
+# 第五种
+
+# a.py
+
+class A:
+    pass
+
+
+aa = A()
+
+# b.py
+# from a import aa
+# aa.xxxx
