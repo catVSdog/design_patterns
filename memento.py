@@ -60,7 +60,5 @@ if __name__ == '__main__':
     print(f"当前血量：{game.blood}, 怒气值：{game.angry}, 魔法值：{game.magic}")
     print("++ 扛不住了...回退吧... ++")
     recove_meme = manger.get_mem()
-    game.blood = recove_meme.blood
-    game.angry = recove_meme.angry
-    game.magic = recove_meme.magic
+    game.recover(recove_meme)
     print(f"当前血量：{game.blood}, 怒气值：{game.angry}, 魔法值：{game.magic}")
